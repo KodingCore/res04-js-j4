@@ -41,10 +41,6 @@ exercice3();
 
 function exercice4()
 {
-    let btn = document.getElementById("btn-add-hero");
-    let tbody = document.getElementsByTagName("tbody");
-    
-    
     let heroes = [
         {
             name : "Clark Kent",
@@ -60,53 +56,61 @@ function exercice4()
         }
     ];
     
-    let hero;
+    let btn = document.getElementById("btn-add-hero");
+    let tbody = document.getElementsByTagName("tbody");
     let tr;
     let td;
     let td2;
     let nodeName;
     let nodeSecret;
+    let i = 0;
     
-    for(hero of heroes){
-        btn.addEventListener("click", function(){
+    btn.addEventListener("click", function(){
+        if(i<heroes.length ){
             tr = document.createElement("tr");
-            tbody.appendChild(tr);
+            
             td = document.createElement("td");
-            tr.appendChild(td);
-            nodeName = document.createTextNode(hero.name);
-            td.appendChild(nodeName);
             td2 = document.createElement("td");
+            
+            nodeName = document.createTextNode(heroes[i].name);
+            nodeSecret = document.createTextNode(heroes[i].secret);
+            
+            tbody[0].appendChild(tr);
             tr.appendChild(td);
-            nodeSecret = document.createElement(hero.sercet);
-            td2.appendChild(nodeName);
-        });
-    }
-    
-    /*in tbody
-    <tr>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    */
-    
+            td.appendChild(nodeName);
+            tr.appendChild(td2);
+            td2.appendChild(nodeSecret);
+        }
+        i++;
+    });
 }
 exercice4();
 
+
+
 function exercice5()
 {
-
+    let blue = document.getElementById("blue");
+    let red = document.getElementById("red");
+    let green = document.getElementById("green");
+    let btn = document.getElementById("btn-turn");
+    
+    btn.addEventListener("click", function(){
+        blue.setAttribute("id", "green");
+        green.setAttribute("id", "blue");
+    });
 }
+
+exercice5();
 
 function exercice6()
 {
-
+    let ball = document.getElementById("ball");
+    let btn = document.getElementById("btn-roll");
+    
+    btn.addEventListener("click", function(){
+        ball.classList.add("roll");
+    })
 }
+
+exercice6();
